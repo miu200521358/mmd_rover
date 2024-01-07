@@ -1,4 +1,13 @@
 {
+  "Info": {
+    "productName": "MMD Rover",
+    "productVersion": "1.0.0_beta_01",
+    "comments": "Built using Wails (https://wails.io)",
+    "companyName": "mtools",
+    "copyright": "Copyright miu200521358",
+    "fileAssociations": null,
+    "protocols": null
+  },
   "appargs": "",
   "assetdir": "./frontend/dist",
   "Author": {
@@ -24,15 +33,6 @@
   "frontend:dir": "frontend",
   "frontend:install": "npm install",
   "garbleargs": "",
-  "Info": {
-    "comments": "Built using Wails (https://wails.io)",
-    "companyName": "mmd_rover",
-    "copyright": "Copyright.........",
-    "fileAssociations": null,
-    "productName": "mmd_rover",
-    "productVersion": "1.0.0",
-    "protocols": null
-  },
   "name": "mmd_rover",
   "nsisType": "multiple",
   "obfuscated": false,
