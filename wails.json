@@ -1,0 +1,49 @@
+{
+  "appargs": "",
+  "assetdir": "./frontend/dist",
+  "Author": {
+    "email": "38824651+miu200521358@users.noreply.github.com",
+    "name": "miu"
+  },
+  "bindings": {
+    "ts_generation": {
+      "outputType": "",
+      "prefix": "",
+      "suffix": ""
+    }
+  },
+  "build:dir": "build",
+  "debounceMS": 100,
+  "devServer": "localhost:34115",
+  "frontend:build": "npm run build",
+  "frontend:dev": "",
+  "frontend:dev:build": "",
+  "frontend:dev:install": "",
+  "frontend:dev:serverUrl": "auto",
+  "frontend:dev:watcher": "npm run dev",
+  "frontend:dir": "frontend",
+  "frontend:install": "npm install",
+  "garbleargs": "",
+  "Info": {
+    "comments": "Built using Wails (https://wails.io)",
+    "companyName": "mmd_rover",
+    "copyright": "Copyright.........",
+    "fileAssociations": null,
+    "productName": "mmd_rover",
+    "productVersion": "1.0.0",
+    "protocols": null
+  },
+  "name": "mmd_rover",
+  "nsisType": "multiple",
+  "obfuscated": false,
+  "outputfilename": "mmd_rover.exe",
+  "OutputType": "",
+  "Platform": "",
+  "postBuildHooks": null,
+  "preBuildHooks": null,
+  "projectdir": "C:/MMD/mmd_rover",
+  "reloaddirs": "./frontend/src/components,./frontend/src/i18n/locales",
+  "runNonNativeBuildHooks": false,
+  "version": "2",
+  "wailsjsdir": "./frontend/src"
+}

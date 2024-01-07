@@ -1,0 +1,177 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "npm: install - frontend",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"install"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/frontend",
+				"env": {
+					"CGO_ENABLED": "1"
+				}
+			},
+			"presentation": {
+				"clear": true,
+				"panel": "shared",
+				"showReuseMessage": false
+			},
+			"problemMatcher": []
+		},
+		{
+			"label": "npm: install - frontend/src/wailsjs/runtime",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"install"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/frontend/src/wailsjs/runtime",
+				"env": {
+					"CGO_ENABLED": "1"
+				}
+			},
+			"presentation": {
+				"clear": true,
+				"panel": "shared",
+				"showReuseMessage": false
+			},
+			"problemMatcher": [],
+			"dependsOn": [
+				"npm: install - frontend",
+			]
+		},
+		{
+			"label": "npm: run build",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"run",
+				"build"
+			],
+			"options": {
+				"cwd": "${workspaceFolder}/frontend"
+			},
+			"presentation": {
+				"clear": true,
+				"panel": "shared",
+				"showReuseMessage": false
+			},
+			"problemMatcher": [],
+			"dependsOn": [
+				"npm: install - frontend/src/wailsjs/runtime",
+			]
+		},
+		{
+			"label": "build",
+			"type": "shell",
+			"options": {
+				"cwd": "${workspaceFolder}/",
+				"env": {
+					"CGO_ENABLED": "1"
+				}
+			},
+			"osx": {
+				"options": {
+					"env": {
+						"CGO_CFLAGS": "-mmacosx-version-min=10.13",
+						"CGO_LDFLAGS": "-framework UniformTypeIdentifiers -mmacosx-version-min=10.13"
+					}
+				}
+			},
+			"windows": {
+				"options": {
+					"env": {
+						"CGO_ENABLED": "0"
+					}
+				}
+			},
+			"command": "go",
+			"args": [
+				"build",
+				"-tags",
+				"production,desktop",
+				"-gcflags",
+				"all=-N -l",
+				"-o",
+				"build/bin/mmd_rover.exe"
+			]
+		},
+		{
+			"label": "build debug",
+			"type": "shell",
+			"options": {
+				"cwd": "${workspaceFolder}/",
+				"env": {
+					"CGO_ENABLED": "1"
+				}
+			},
+			"osx": {
+				"options": {
+					"env": {
+						"CGO_CFLAGS": "-mmacosx-version-min=10.13",
+						"CGO_LDFLAGS": "-framework UniformTypeIdentifiers -mmacosx-version-min=10.13"
+					}
+				}
+			},
+			"windows": {
+				"options": {
+					"env": {
+						"CGO_ENABLED": "0"
+					}
+				}
+			},
+			"command": "go",
+			"args": [
+				"build",
+				"-tags",
+				"production,desktop,debug",
+				"-gcflags",
+				"all=-N -l",
+				"-o",
+				"build/bin/mmd_rover.exe"
+			]
+		},
+		{
+			"label": "wails: build dev",
+			"type": "shell",
+			"options": {
+				"cwd": "${workspaceFolder}/",
+				"env": {
+					"CGO_ENABLED": "1"
+				}
+			},
+			"osx": {
+				"options": {
+					"env": {
+						"CGO_CFLAGS": "-mmacosx-version-min=10.13",
+						"CGO_LDFLAGS": "-framework UniformTypeIdentifiers -mmacosx-version-min=10.13"
+					}
+				}
+			},
+			"windows": {
+				"options": {
+					"env": {
+						"CGO_ENABLED": "0"
+					}
+				}
+			},
+			"command": "go",
+			"args": [
+				"build",
+				"-tags",
+				"dev",
+				"-gcflags",
+				"all=-N -l",
+				"-o",
+				"build/bin/mmd_rover.exe"
+			],
+			"dependsOn": [
+				"npm: run build"
+			]
+		}
+	]
+}
