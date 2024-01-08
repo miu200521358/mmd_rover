@@ -9,6 +9,7 @@ import (
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
 
 	"github.com/miu200521358/mmd_rover/app"
+	config "github.com/miu200521358/mmd_rover/app/utils"
 )
 
 //go:embed all:frontend/dist
@@ -35,6 +36,7 @@ func main() {
 		OnStartup: app.StartUp,
 		Bind: []interface{}{
 			app,
+			&config.Config{},
 		},
 	})
 

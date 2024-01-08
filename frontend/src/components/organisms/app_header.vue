@@ -10,7 +10,7 @@ import { onMounted, ref } from 'vue';
 import LocaleSelect from "@/components/molecules/locale/locale_select.vue";
 import { useLocaleStore } from "@/components/molecules/locale/locale_store";
 
-import { SaveConfig, LoadConfig } from "@/wailsjs/go/app/App";
+import { SaveConfig, LoadConfig } from "@/wailsjs/go/config/Config";
 
 const initialLocale = ref<string>('ja');
 const localeStore = useLocaleStore();

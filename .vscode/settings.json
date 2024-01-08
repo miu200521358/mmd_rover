@@ -6,13 +6,16 @@
         "comfycolor",
         "garbleargs",
         "gjson",
+        "mlib",
         "mtools",
         "nsis",
         "outputfilename",
+        "pinia",
         "projectdir",
         "reloaddirs",
         "tidwall",
         "wailsapp",
+        "wailsjs",
         "wailsjsdir"
     ]
 }

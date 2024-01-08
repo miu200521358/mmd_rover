@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { SaveConfig } from '@/wailsjs/go/app/App';
+import { SaveConfig } from '@/wailsjs/go/config/Config';
 
 export const useLocaleStore = defineStore({
     id: 'locale',
