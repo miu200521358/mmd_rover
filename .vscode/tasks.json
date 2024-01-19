@@ -2,176 +2,50 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "npm: install - frontend",
+			"label": "shell: delete pre debug exe",
 			"type": "shell",
-			"command": "npm",
+			"command": "cmd.exe",
 			"args": [
-				"install"
+				"/c",
+				"set \"WORKSPACE_FOLDER=${workspaceFolder}\" && C:/MMD/mlib_go/.vscode/scripts/delete_pre_debug_exe.bat"
 			],
-			"options": {
-				"cwd": "${workspaceFolder}/frontend",
-				"env": {
-					"CGO_ENABLED": "1"
-				}
+			"group": {
+				"kind": "none",
+				"isDefault": true
 			},
 			"presentation": {
-				"clear": true,
+				"echo": false,
+				"reveal": "silent",
+				"focus": false,
 				"panel": "shared",
-				"showReuseMessage": false
+				"showReuseMessage": false,
+				"clear": true
+			}
+		},
+		{
+			"label": "go: mod tidy",
+			"type": "shell",
+			"command": "go",
+			"args": [
+				"mod",
+				"tidy"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
 			},
+			"presentation": {
+				"echo": false,
+				"reveal": "silent",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": false,
+				"clear": true
+			},
+			"dependsOn": [
+				"shell: delete pre debug exe"
+			],
 			"problemMatcher": []
-		},
-		{
-			"label": "npm: install - frontend/src/wailsjs/runtime",
-			"type": "shell",
-			"command": "npm",
-			"args": [
-				"install"
-			],
-			"options": {
-				"cwd": "${workspaceFolder}/frontend/src/wailsjs/runtime",
-				"env": {
-					"CGO_ENABLED": "1"
-				}
-			},
-			"presentation": {
-				"clear": true,
-				"panel": "shared",
-				"showReuseMessage": false
-			},
-			"problemMatcher": [],
-			"dependsOn": [
-				"npm: install - frontend",
-			]
-		},
-		{
-			"label": "npm: run build",
-			"type": "shell",
-			"command": "npm",
-			"args": [
-				"run",
-				"build"
-			],
-			"options": {
-				"cwd": "${workspaceFolder}/frontend"
-			},
-			"presentation": {
-				"clear": true,
-				"panel": "shared",
-				"showReuseMessage": false
-			},
-			"problemMatcher": [],
-			"dependsOn": [
-				"npm: install - frontend/src/wailsjs/runtime",
-			]
-		},
-		{
-			"label": "build",
-			"type": "shell",
-			"options": {
-				"cwd": "${workspaceFolder}/",
-				"env": {
-					"CGO_ENABLED": "1"
-				}
-			},
-			"osx": {
-				"options": {
-					"env": {
-						"CGO_CFLAGS": "-mmacosx-version-min=10.13",
-						"CGO_LDFLAGS": "-framework UniformTypeIdentifiers -mmacosx-version-min=10.13"
-					}
-				}
-			},
-			"windows": {
-				"options": {
-					"env": {
-						"CGO_ENABLED": "0"
-					}
-				}
-			},
-			"command": "go",
-			"args": [
-				"build",
-				"-tags",
-				"production,desktop",
-				"-gcflags",
-				"all=-N -l",
-				"-o",
-				"build/bin/mmd_rover.exe"
-			]
-		},
-		{
-			"label": "build debug",
-			"type": "shell",
-			"options": {
-				"cwd": "${workspaceFolder}/",
-				"env": {
-					"CGO_ENABLED": "1"
-				}
-			},
-			"osx": {
-				"options": {
-					"env": {
-						"CGO_CFLAGS": "-mmacosx-version-min=10.13",
-						"CGO_LDFLAGS": "-framework UniformTypeIdentifiers -mmacosx-version-min=10.13"
-					}
-				}
-			},
-			"windows": {
-				"options": {
-					"env": {
-						"CGO_ENABLED": "0"
-					}
-				}
-			},
-			"command": "go",
-			"args": [
-				"build",
-				"-tags",
-				"production,desktop,debug",
-				"-gcflags",
-				"all=-N -l",
-				"-o",
-				"build/bin/mmd_rover.exe"
-			]
-		},
-		{
-			"label": "wails: build dev",
-			"type": "shell",
-			"options": {
-				"cwd": "${workspaceFolder}/",
-				"env": {
-					"CGO_ENABLED": "1"
-				}
-			},
-			"osx": {
-				"options": {
-					"env": {
-						"CGO_CFLAGS": "-mmacosx-version-min=10.13",
-						"CGO_LDFLAGS": "-framework UniformTypeIdentifiers -mmacosx-version-min=10.13"
-					}
-				}
-			},
-			"windows": {
-				"options": {
-					"env": {
-						"CGO_ENABLED": "0"
-					}
-				}
-			},
-			"command": "go",
-			"args": [
-				"build",
-				"-tags",
-				"dev",
-				"-gcflags",
-				"all=-N -l",
-				"-o",
-				"build/bin/mmd_rover.exe"
-			],
-			"dependsOn": [
-				"npm: run build"
-			]
 		}
 	]
 }
